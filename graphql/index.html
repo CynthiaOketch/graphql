@@ -6,76 +6,185 @@
   <title>My GraphQL Profile</title>
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f4f6fa;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f4f6fa 100%);
       margin: 0;
       padding: 0;
       color: #222;
+      min-height: 100vh;
     }
     .container {
-      max-width: 600px;
+      max-width: 1000px;
       margin: 40px auto;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 2rem;
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(80,100,180,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+      padding: 2.5rem 2rem 2rem 2rem;
     }
-    h1, h2 {
+    h1 {
       text-align: center;
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #2a3a5e;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #3b4a6b;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
     }
     .hidden { display: none; }
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-bottom: 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(80,100,180,0.07);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      max-width: 350px;
+      margin: 2rem auto 0 auto;
     }
     input[type="text"], input[type="password"] {
-      padding: 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
+      padding: 0.9rem;
+      border: 1.5px solid #c7d0e0;
+      border-radius: 7px;
+      font-size: 1.05rem;
+      background: #f7f9fc;
+      transition: border 0.2s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border: 1.5px solid #7b9fff;
+      outline: none;
     }
     button {
-      padding: 0.7rem;
-      background: #0077ff;
+      padding: 0.9rem;
+      background: linear-gradient(90deg, #5a7fff 0%, #7b9fff 100%);
       color: #fff;
       border: none;
-      border-radius: 5px;
-      font-size: 1rem;
+      border-radius: 7px;
+      font-size: 1.08rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      box-shadow: 0 1.5px 6px rgba(80,100,180,0.07);
+      transition: background 0.2s, box-shadow 0.2s;
     }
     button:hover {
-      background: #005fcc;
+      background: linear-gradient(90deg, #3b4a6b 0%, #5a7fff 100%);
+      box-shadow: 0 4px 16px rgba(80,100,180,0.13);
     }
     .error {
       color: #d32f2f;
       text-align: center;
       margin-bottom: 1rem;
-    }
-    .profile-info {
-      margin-bottom: 2rem;
+      font-weight: 500;
     }
     .logout-btn {
       float: right;
-      background: #d32f2f;
+      background: linear-gradient(90deg, #ff5a7f 0%, #ff7b9f 100%);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .main-sections {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    #section-1 {
+      flex: 1 1 250px;
+      max-width: 320px;
+      padding-right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    #profile-info {
+      background: linear-gradient(120deg, #e3eaff 0%, #f7f9fc 100%);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(80,100,180,0.07);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    #profile-info:hover {
+      box-shadow: 0 6px 24px rgba(80,100,180,0.13);
+    }
+    #profile-info p {
+      font-size: 1.08rem;
+      margin: 0.7rem 0;
+      color: #2a3a5e;
+      letter-spacing: 0.1px;
+    }
+    #section-2 {
+      flex: 2 1 0;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(80,100,180,0.07);
+      padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(80,100,180,0.13);
+      transform: translateY(-2px) scale(1.01);
     }
     .stats-section {
-      margin-top: 2rem;
+      margin-top: 0;
     }
     .svg-graph {
       display: block;
-      margin: 1rem auto;
-      background: #f9f9f9;
+      margin: 1.2rem auto 0.5rem auto;
+      background: #f7f9fc;
       border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 4px rgba(80,100,180,0.04);
+    }
+    .stat-title {
+      text-align: left;
+      margin-bottom: 0.7rem;
+      font-size: 1.13rem;
+      font-weight: 600;
+      color: #3b4a6b;
+      letter-spacing: -0.2px;
+      padding-left: 0.2rem;
+    }
+    @media (max-width: 900px) {
+      .container { padding: 1.2rem 0.5rem; }
+      .main-sections { gap: 1.2rem; }
+      #section-1 { max-width: 100%; }
+    }
+    @media (max-width: 800px) {
+      .main-sections {
+        flex-direction: column;
+      }
+      #section-1 {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+        max-width: 100%;
+      }
+      #section-2 {
+        padding-left: 0;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>My GraphQL Profile</h1>
+    <h1>My GraphQL School Stats</h1>
     <!-- Login Form -->
     <div id="login-section">
       <form id="login-form">
@@ -86,19 +195,33 @@
       <div class="error" id="login-error"></div>
     </div>
 
-    <!-- Profile Section -->
-    <div id="profile-section" class="hidden">
+    <!-- Stats Section -->
+    <div id="stats-section" class="hidden">
       <button class="logout-btn" id="logout-btn">Logout</button>
-      <h2>Welcome, <span id="profile-login"></span></h2>
-      <div class="profile-info">
-        <p><strong>User ID:</strong> <span id="profile-id"></span></p>
-        <p><strong>Total XP:</strong> <span id="profile-xp"></span></p>
-        <p><strong>Grades:</strong> <span id="profile-grades"></span></p>
-      </div>
-      <div class="stats-section">
-        <h2>Statistics</h2>
-        <svg id="xp-graph" class="svg-graph" width="100%" height="200"></svg>
-        <svg id="passfail-graph" class="svg-graph" width="100%" height="200"></svg>
+      <div class="main-sections">
+        <div id="section-1">
+          <h2>User Details</h2>
+          <div id="profile-info" class="card">
+            <p><strong>Login:</strong> <span id="profile-login"></span></p>
+            <p><strong>Total XP:</strong> <span id="profile-xp"></span></p>
+            <p><strong>Audits Done:</strong> <span id="profile-audits"></span></p>
+          </div>
+        </div>
+        <div id="section-2" class="stats-section">
+          <h2>Statistics</h2>
+          <div class="card">
+            <div class="stat-title">XP Earned Over Time</div>
+            <svg id="xp-graph" class="svg-graph" width="100%" height="200"></svg>
+          </div>
+          <div class="card">
+            <div class="stat-title">XP Earned by Project</div>
+            <svg id="xp-project-graph" class="svg-graph" width="100%" height="250"></svg>
+          </div>
+          <div class="card">
+            <div class="stat-title">Audit Ratio (Done vs Received)</div>
+            <svg id="audit-graph" class="svg-graph" width="100%" height="200"></svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -171,62 +294,50 @@
       setText('login-error', '');
       try {
         await login(username, password);
-        await loadProfile();
+        await loadStats();
       } catch (err) {
         setText('login-error', err.message);
       }
     });
     document.getElementById('logout-btn').addEventListener('click', logout);
 
-    async function loadProfile() {
+    async function loadStats() {
       hide('login-section');
-      show('profile-section');
+      show('stats-section');
       try {
         // 1. Get user info (id, login)
         const userData = await graphqlQuery(`{
           user { id login }
         }`);
         const user = userData.user[0];
+        const userId = user.id;
+        // 2. Get total XP and audits done for this user only
+        const statsData = await graphqlQuery(`{
+          xp: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "xp"}}) { aggregate { sum { amount } } }
+          audits_done: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "up"}}) { aggregate { count } }
+        }`);
+        // Set profile info
         setText('profile-login', user.login);
-        setText('profile-id', user.id);
-
-        // 2. Get total XP (sum of transaction.amount where type = "xp")
-        const xpData = await graphqlQuery(`{
-          transaction_aggregate(where: {userId: {_eq: ${user.id}}, type: {_eq: "xp"}}) {
-            aggregate { sum { amount } }
-          }
-        }`);
-        setText('profile-xp', xpData.transaction_aggregate.aggregate.sum.amount || 0);
-
-        // 3. Get grades (count of progress with grade=1 as pass, grade=0 as fail)
-        const gradesData = await graphqlQuery(`{
-          progress_aggregate(where: {userId: {_eq: ${user.id}}}) {
-            aggregate { count }
-          }
-          progress_pass: progress_aggregate(where: {userId: {_eq: ${user.id}}, grade: {_eq: 1}}) {
-            aggregate { count }
-          }
-          progress_fail: progress_aggregate(where: {userId: {_eq: ${user.id}}, grade: {_eq: 0}}) {
-            aggregate { count }
-          }
-        }`);
-        const total = gradesData.progress_aggregate.aggregate.count;
-        const pass = gradesData.progress_pass.aggregate.count;
-        const fail = gradesData.progress_fail.aggregate.count;
-        setText('profile-grades', `Total: ${total}, Pass: ${pass}, Fail: ${fail}`);
-
-        // 4. Draw SVG Graphs
-        await drawXPGraph(user.id);
-        await drawPassFailGraph(pass, fail);
+        // Convert XP to MB
+        const totalXP = statsData.xp.aggregate.sum.amount || 0;
+        const totalXP_MB = (totalXP / 1000000).toFixed(1);
+        setText('profile-xp', `${totalXP_MB} MB`);
+        setText('profile-audits', statsData.audits_done.aggregate.count || 0);
+        // 3. XP over time
+        await drawXPGraph(userId);
+        // 4. XP by project
+        await drawXPByProjectGraph(userId);
+        // 5. Audit ratio
+        await drawAuditGraph(userId);
       } catch (err) {
-        alert('Error loading profile: ' + err.message);
+        alert('Error loading stats: ' + err.message);
         logout();
       }
     }
 
     // --- SVG Graphs ---
+    // 1. XP over time
     async function drawXPGraph(userId) {
-      // Query XP transactions, group by date
       const xpData = await graphqlQuery(`{
         transaction(where: {userId: {_eq: ${userId}}, type: {_eq: "xp"}}, order_by: {createdAt: asc}) {
           amount
@@ -234,19 +345,16 @@
         }
       }`);
       const txs = xpData.transaction;
-      // Prepare data: sum XP per day
       const xpByDate = {};
       txs.forEach(tx => {
         const date = tx.createdAt.slice(0, 10);
         xpByDate[date] = (xpByDate[date] || 0) + tx.amount;
       });
-      // Cumulative XP
       let cumXP = 0;
       const points = Object.entries(xpByDate).map(([date, amt]) => {
         cumXP += amt;
         return { date, xp: cumXP };
       });
-      // SVG dimensions
       const w = 500, h = 180, pad = 40;
       const svg = document.getElementById('xp-graph');
       svg.innerHTML = '';
@@ -255,13 +363,10 @@
         svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#888" font-size="18">Not enough data</text>';
         return;
       }
-      // Scale
       const maxXP = Math.max(...points.map(p => p.xp));
       const xStep = (w - 2*pad) / (points.length - 1);
-      // Draw axes
       svg.innerHTML += `<line x1="${pad}" y1="${h-pad}" x2="${w-pad}" y2="${h-pad}" stroke="#bbb" />`;
       svg.innerHTML += `<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${h-pad}" stroke="#bbb" />`;
-      // Draw line
       let path = '';
       points.forEach((p, i) => {
         const x = pad + i * xStep;
@@ -269,42 +374,104 @@
         path += (i === 0 ? 'M' : 'L') + x + ' ' + y + ' ';
       });
       svg.innerHTML += `<path d="${path}" fill="none" stroke="#0077ff" stroke-width="3" />`;
-      // Draw dots
       points.forEach((p, i) => {
         const x = pad + i * xStep;
         const y = h - pad - (p.xp / maxXP) * (h - 2*pad);
         svg.innerHTML += `<circle cx="${x}" cy="${y}" r="4" fill="#0077ff" />`;
       });
-      // Labels
       svg.innerHTML += `<text x="${pad}" y="${pad-10}" font-size="12">XP</text>`;
       svg.innerHTML += `<text x="${w-pad}" y="${h-10}" font-size="12" text-anchor="end">Date</text>`;
     }
 
-    async function drawPassFailGraph(pass, fail) {
-      // Simple bar chart
-      const w = 300, h = 180, pad = 40;
-      const svg = document.getElementById('passfail-graph');
+    // 2. XP by project
+    async function drawXPByProjectGraph(userId) {
+      // Get all XP transactions with project info
+      const xpData = await graphqlQuery(`{
+        transaction(where: {userId: {_eq: ${userId}}, type: {_eq: "xp"}}) {
+          amount
+          objectId
+          path
+        }
+        object { id name type }
+      }`);
+      const txs = xpData.transaction;
+      const objects = xpData.object;
+      // Group by project (objectId or path)
+      const xpByProject = {};
+      txs.forEach(tx => {
+        // Try to get project name from object table
+        let projectName = tx.path;
+        if (tx.objectId && objects) {
+          const obj = objects.find(o => o.id === tx.objectId);
+          if (obj && obj.name) projectName = obj.name;
+        }
+        xpByProject[projectName] = (xpByProject[projectName] || 0) + tx.amount;
+      });
+      // Sort by XP descending, take top 10
+      const sorted = Object.entries(xpByProject).sort((a,b) => b[1]-a[1]).slice(0,10);
+      const w = 500, h = 220, pad = 60, barW = 30;
+      const svg = document.getElementById('xp-project-graph');
       svg.innerHTML = '';
       svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      const maxVal = Math.max(pass, fail, 1);
-      const barW = 60;
-      // Pass bar
-      const passH = (pass / maxVal) * (h - 2*pad);
-      svg.innerHTML += `<rect x="${w/2 - barW - 10}" y="${h-pad-passH}" width="${barW}" height="${passH}" fill="#4caf50" />`;
-      svg.innerHTML += `<text x="${w/2 - barW/2 - 10}" y="${h-pad-passH-10}" text-anchor="middle" fill="#222">${pass}</text>`;
-      svg.innerHTML += `<text x="${w/2 - barW/2 - 10}" y="${h-pad+20}" text-anchor="middle" fill="#222">Pass</text>`;
-      // Fail bar
-      const failH = (fail / maxVal) * (h - 2*pad);
-      svg.innerHTML += `<rect x="${w/2 + 10}" y="${h-pad-failH}" width="${barW}" height="${failH}" fill="#d32f2f" />`;
-      svg.innerHTML += `<text x="${w/2 + barW/2 + 10}" y="${h-pad-failH-10}" text-anchor="middle" fill="#222">${fail}</text>`;
-      svg.innerHTML += `<text x="${w/2 + barW/2 + 10}" y="${h-pad+20}" text-anchor="middle" fill="#222">Fail</text>`;
+      if (sorted.length === 0) {
+        svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#888" font-size="18">No data</text>';
+        return;
+      }
+      const maxXP = Math.max(...sorted.map(x => x[1]));
+      sorted.forEach(([name, xp], i) => {
+        const x = pad + i * (barW + 20);
+        const barH = (xp / maxXP) * (h - 2*pad);
+        // XP in KB
+        const xpKB = (xp / 1000).toFixed(1);
+        svg.innerHTML += `<rect x="${x}" y="${h-pad-barH}" width="${barW}" height="${barH}" fill="#0077ff" />`;
+        svg.innerHTML += `<text x="${x+barW/2}" y="${h-pad-barH-8}" text-anchor="middle" font-size="11">${xpKB} KB</text>`;
+        svg.innerHTML += `<text x="${x+barW/2}" y="${h-pad+15}" text-anchor="middle" font-size="10" transform="rotate(30,${x+barW/2},${h-pad+15})">${name.split('/').pop().slice(0,12)}</text>`;
+      });
+      svg.innerHTML += `<text x="${pad-30}" y="${pad-20}" font-size="12">XP (KB)</text>`;
+    }
+
+    // 3. Audit ratio
+    async function drawAuditGraph(userId) {
+      // up = audits done, down = audits received
+      const auditData = await graphqlQuery(`{
+        audits_done: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "up"}}) { aggregate { count } }
+        audits_received: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "down"}}) { aggregate { count } }
+      }`);
+      const done = auditData.audits_done.aggregate.count;
+      const received = auditData.audits_received.aggregate.count;
+      // Pie chart
+      const w = 300, h = 180, r = 70, cx = w/2, cy = h/2;
+      const svg = document.getElementById('audit-graph');
+      svg.innerHTML = '';
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      const total = done + received;
+      if (total === 0) {
+        svg.innerHTML = '<text x="50%" y="50%" text-anchor="middle" fill="#888" font-size="18">No data</text>';
+        return;
+      }
+      const doneAngle = (done / total) * 2 * Math.PI;
+      const receivedAngle = (received / total) * 2 * Math.PI;
+      // Pie slices
+      function describeArc(cx, cy, r, startAngle, endAngle) {
+        const x1 = cx + r * Math.cos(startAngle);
+        const y1 = cy + r * Math.sin(startAngle);
+        const x2 = cx + r * Math.cos(endAngle);
+        const y2 = cy + r * Math.sin(endAngle);
+        const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
+        return `M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${largeArc} 1 ${x2},${y2} Z`;
+      }
+      svg.innerHTML += `<path d="${describeArc(cx, cy, r, 0, doneAngle)}" fill="#4caf50" />`;
+      svg.innerHTML += `<path d="${describeArc(cx, cy, r, doneAngle, doneAngle+receivedAngle)}" fill="#ff9800" />`;
+      // Labels
+      svg.innerHTML += `<rect x="${cx-40}" y="${h-30}" width="12" height="12" fill="#4caf50" /><text x="${cx-24}" y="${h-20}" font-size="12">Done: ${done}</text>`;
+      svg.innerHTML += `<rect x="${cx+30}" y="${h-30}" width="12" height="12" fill="#ff9800" /><text x="${cx+46}" y="${h-20}" font-size="12">Received: ${received}</text>`;
     }
 
     // --- On Load ---
     (async function() {
       if (getJWT()) {
         try {
-          await loadProfile();
+          await loadStats();
         } catch {
           logout();
         }
