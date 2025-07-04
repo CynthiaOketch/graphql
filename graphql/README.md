@@ -63,14 +63,9 @@ graphql/
 
 ---
 
-## 🛠️ For Developers: Run Locally
+## For Developers: Run Locally
 1. Clone or download the repository.
-2. Serve the project with a local web server (required for API access):
-   ```bash
-   cd graphql
-   python3 -m http.server 8080
-   ```
-3. Open [http://localhost:8080](http://localhost:8080) in your browser.
+2. Run the index.html file via live server
 
 ---
 
