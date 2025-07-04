@@ -1,23 +1,23 @@
-# My GraphQL School Stats
+# GraphQL Stats
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Project Report by Cynthia Oketch Nas
+## Project Overview
 
-Hello! I'm Cynthia Oketch Nas, and this is my completed Zone01 GraphQL profile project. The goal was to learn GraphQL, JWT authentication, and modern web UI/UX by building a personal dashboard that visualizes my school journey using the official Zone01 GraphQL API.
+A Zone01 GraphQL profile project. The goal was to learn GraphQL, JWT authentication, and modern web UI/UX by building a personal dashboard that visualizes the school journey using the official Zone01 GraphQL API.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 **You can view and interact with my hosted project here:**
 
 ➡️ [https://CynthiaOketch.github.io/<your-repo-name>/graphql/](https://CynthiaOketch.github.io/<your-repo-name>/graphql/)
 
-_Replace `<your-repo-name>` with the actual repository name if you fork or clone._
+
 
 ---
 
-## 🚀 Features
+## Features
 - **Secure Login:** Use your Zone01 credentials (username/email + password)
 - **User Details:** See your login, current XP (in MB), and audits done
 - **Statistics Section:**
@@ -29,24 +29,15 @@ _Replace `<your-repo-name>` with the actual repository name if you fork or clone
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 - HTML5
 - CSS3 (in `style.css`)
 - JavaScript (in `main.js`)
 - GraphQL API: [Zone01 Kisumu](https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql)
 
----
 
-## 📚 What I Learned
-- How to authenticate and use JWTs with a real-world API
-- How to write and nest GraphQL queries (including arguments and relationships)
-- How to process and visualize data with SVG in JavaScript
-- How to design a modern, responsive, and user-friendly web interface
-- How to deploy a static site using GitHub Pages
 
----
-
-## 📝 How to Use My Project
+## How to Use 
 
 ### 1. **Access the Live Site**
 Go to: [https://CynthiaOketch.github.io/<your-repo-name>/graphql/](https://CynthiaOketch.github.io/<your-repo-name>/graphql/)
@@ -60,7 +51,7 @@ Go to: [https://CynthiaOketch.github.io/<your-repo-name>/graphql/](https://Cynth
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 ```
 graphql/
 ├── index.html      # Main HTML file
@@ -83,10 +74,10 @@ graphql/
 
 ---
 
-## 👩‍💻 Contributor
-- [Cynthia Oketch Nas](https://github.com/CynthiaOketch)
+## Contributor
+- [Cynthia Oketch](https://github.com/CynthiaOketch)
 
 ---
 
-## 📄 License
+## License
 This project is licensed under the [MIT License](LICENSE). 
