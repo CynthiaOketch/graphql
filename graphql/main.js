@@ -85,7 +85,13 @@ async function loadStats() {
     const userId = user.id;
     // 2. Get total XP and audits done for this user only
     const statsData = await graphqlQuery(`{
-      xp: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "xp"}}) { aggregate { sum { amount } } }
+      xp: transaction_aggregate(
+        where: {
+          userId: {_eq: ${userId}},
+          type: {_eq: "xp"},
+          eventId: {_eq: 75}
+        }
+      ) { aggregate { sum { amount } } }
       audits_done: transaction_aggregate(where: {userId: {_eq: ${userId}}, type: {_eq: "up"}}) { aggregate { count } }
     }`);
     // Set profile info
